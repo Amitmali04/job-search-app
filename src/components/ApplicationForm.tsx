@@ -1,17 +1,19 @@
 // ApplicationForm.tsx
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { TextAreaInput, TextInput } from "./TextField";
+import { TextAreaInput, TextFile, TextInput } from "./TextField";
 import { BlueButton } from "./Button";
 
+
+
 const ApplicationForm: React.FC = () => {
-  // const [resume, setResume] = useState<File | null>(null);
   const history = useNavigate();
 
   const [values, setValues] = useState({
-    name: "",
-    email: "",
-    coverLetter: "",
+    name:"",
+    email:"",
+    coverLetter:"",
+    resume: ''
   });
 
   const handleFormSubmit = () => {
@@ -50,12 +52,11 @@ const ApplicationForm: React.FC = () => {
             value={values.coverLetter}
             onChange={(e) => setValues({ ...values, coverLetter: e })}
           />
-
-          {/* <TextFile
+          <TextFile 
+           label="Resume"
           type="file"
-            label="File"
-            onChange={(e) => setValues( resume: e)}
-          /> */}
+          onChange={(e) => setValues({...values, resume: e})}
+          />
 
           <BlueButton text={"Apply"} />
         </form>

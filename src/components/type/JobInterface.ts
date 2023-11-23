@@ -6,3 +6,4 @@ export interface JobInterface {
   company_name:string,
   
 }
+

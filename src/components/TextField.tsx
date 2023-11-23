@@ -43,7 +43,7 @@ export const TextAreaInput = (props: {label?:string, placeholder?:string, value?
 }
 
 
-export const TextFile = (props: { type?:string, label?:string, value?:string, onChange: (ele: string) => void} ) => {
+export const TextFile = (props: { type?:string, label?:string, onChange: (ele: string) => void} ) => {
 
     function handleChange(event: any) {
         props.onChange(event.target.files?.[0] || null)
@@ -57,7 +57,6 @@ export const TextFile = (props: { type?:string, label?:string, value?:string, on
               type={props.type}
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 onChange={handleChange}
-                value={props.value}
               />
             </div>
           );
