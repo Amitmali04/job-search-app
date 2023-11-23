@@ -1,38 +1,66 @@
 // ApplicationForm.tsx
-import React, { useState } from 'react';
-import { useNavigate} from 'react-router-dom';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { TextAreaInput, TextInput } from "./TextField";
+import { BlueButton } from "./Button";
 
 const ApplicationForm: React.FC = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [coverLetter, setCoverLetter] = useState('');
-  const [resume, setResume] = useState<File | null>(null);
+  // const [resume, setResume] = useState<File | null>(null);
   const history = useNavigate();
 
+  const [values, setValues] = useState({
+    name: "",
+    email: "",
+    coverLetter: "",
+  });
+
   const handleFormSubmit = () => {
-    // Handle form submission and navigate to success page
-    // Transfer data to success page using state management
-    history('/success', {  });
+
+    history("/success", {state:values});
   };
 
   return (
     <div>
-      <h1>Application Form</h1>
-      <form onSubmit={handleFormSubmit}>
-        <label>Name:</label>
-        <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+      <h1 className="text-center font-extrabold text-lg">Application Form</h1>
 
-        <label>Email:</label>
-        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+      <div className="w-full max-w-xs mx-auto">
+        <form
+          className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+          onSubmit={handleFormSubmit}
+        >
+          <TextInput
+            label="Name"
+            type={"text"}
+            placeholder={"Jhon Doe"}
+            value={values.name}
+            onChange={(e) => setValues({ ...values, name: e })}
+          />
 
-        <label>Cover Letter:</label>
-        <textarea value={coverLetter} onChange={(e) => setCoverLetter(e.target.value)} />
+          <TextInput
+            label="Email"
+            type={"email"}
+            placeholder={"Email"}
+            value={values.email}
+            onChange={(e) => setValues({ ...values, email: e })}
+          />
 
-        <label>Resume:</label>
-        <input type="file" onChange={(e) => setResume(e.target.files?.[0] || null)} />
+          <TextAreaInput
+            label="Cover Letter"
+            placeholder={"Cover Letter"}
+            value={values.coverLetter}
+            onChange={(e) => setValues({ ...values, coverLetter: e })}
+          />
 
-        <button type="submit">Apply</button>
-      </form>
+          {/* <TextFile
+          type="file"
+            label="File"
+            onChange={(e) => setValues( resume: e)}
+          /> */}
+
+          <BlueButton text={"Apply"} />
+        </form>
+      </div>
+
     </div>
   );
 };

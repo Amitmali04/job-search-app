@@ -31,18 +31,17 @@ const JobList: React.FC = () => {
   }, [language]);
 
   const handleJobSelection = (jobId: any) => {
-    // Redirect to job details page with the selected job ID
     navigate(`/jobsdetail`, {state:{"job":jobId}});
   };
   
   return (
-    <div className='eachDiv'>
-      <h1>Job List</h1>
+    <div>
+      <h1 className="text-center font-extrabold text-lg">Job List</h1>
       {jobs && jobs.map((job) => (
-        <div key={job.id} className='singleDiv'
+        <div key={job.id} className="boder shadow-sm my-2 m-5 "
         onClick={() => handleJobSelection(job)}
         >
-          <p style={{background:"red"}}>{job.title}</p>
+          <p className='bg-gray-400 px-2 '>{job.title}</p>
 
         </div>
       ))}

@@ -7,21 +7,29 @@ const LandingPage: React.FC = () => {
   const navigate = useNavigate();
 
   const handleLanguageSelection = () => {
-    // Redirect to jobs page with the selected language as a query parameter
+
     navigate(`/jobs?language=${selectedLanguage}`);
   };
 
   return (
     <div className="w-full">
-      <h1 className="text-yellow-700 text-center">Job Search App</h1>
-      <input
-        type="text"
-        placeholder="Enter programming language"
-        value={selectedLanguage}
-        onChange={(e) => setSelectedLanguage(e.target.value)}
-      />
-      <button onClick={handleLanguageSelection}>Search Jobs</button>
+      <h1 className="text-center font-extrabold text-lg">Job Search App</h1>
+      <div className="mt-5 text-center mx-10">
+        <input
+          className="border-black rounded px-10 bg-gray-100"
+          type="text"
+          placeholder="Enter programming language"
+          value={selectedLanguage}
+          onChange={(e) => setSelectedLanguage(e.target.value)}
+        />
 
+        <button
+          onClick={handleLanguageSelection}
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 border border-blue-700 rounded"
+        >
+          Search Jobs
+        </button>
+      </div>
     </div>
   );
 };
